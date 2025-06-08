@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Oscar Niklasson</title>
-		<meta name="description" content="">
+		<title>Writing is thinking</title>
+		<meta name="description" content="Thoughts on the connection between clear writing and clear thinking.">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Oscar Niklasson">
 		
 		
@@ -288,6 +288,174 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
+}
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
 }</style>
 		
 	</head>
@@ -299,7 +467,7 @@ header {
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/" aria-current="page">Home</a></li>
+					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/blog/">Archive</a></li>
 					<li class="nav-item"><a href="/about/">About</a></li>
 					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
@@ -312,23 +480,21 @@ header {
 				
 
 
-<h1 id="latest-1-post">Latest 1 Post</h1>
+<h1 id="writing-is-thinking">Writing is thinking</h1>
 
+<ul class="post-metadata">
+	<li><time datetime="2023-06-05">05 June 2023</time></li>
+	<li><a href="/tags/learning/" class="post-tag">learning</a></li>
+</ul>
 
-
-<ol reversed="" class="postlist" style="--postlist-index: 2">
-	<li class="postlist-item">
-		<a href="/blog/writing_is_thinking/" class="postlist-link">Writing is thinking</a>
-		<time class="postlist-date" datetime="2023-06-05">June 2023</time>
-	</li>
-</ol>
-
-
-
-
-
-
-
+<p>Mental models are naturally slippery. They will easily sway between assuming one thing in one discussion and something contradictory in another. Such fluctuation will lead you astray into the dark forest on your quest to build a good model describing a current situation. To reach the luminous meadow, it is imperative to expose your mental models to the light of day for others to see.</p>
+<p>Fire up a word processor and start writing. If it helps, you can also include diagrams, equations or arrows to illustrate connections. But at for me at least, writing is key and the easiest to get started with. Anyway, as you spill out your mental model, the clearer your thinking will become and so you will have to admit your uncertainties and adjust your model.</p>
+<p>From a software engineer’s perspective and for the reasons just described, clear thinking is an essential asset when it comes to defining problems and producing high-quality work. With the added dimension of working together with a team towards a commonly shared goal, a shared model is undeniably necessary for the team’s effectiveness in reaching its objectives.</p>
+<p>In her excellent book, <a href="https://en.wikipedia.org/wiki/Thinking_In_Systems%3A_A_Primer">Thinking In Systems: A Primer</a>, Donella Meadows writes:</p>
+<blockquote>
+<p>&quot;Remember, always, that everything you know, and everything everyone knows, is only a model. Get your model out there where it can be viewed. Invite others to challenge your assumptions and add their own.&quot;</p>
+</blockquote>
+<p>Go ahead and add that book to your reading list, but before doing so, remember to let out your mental models, validate them against evidence and scuttle what doesn’t hold up. Writing is thinking. Think clearly.</p>
 
 
 			</heading-anchors>
@@ -338,7 +504,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.1.0</a></em></p>
 		</footer>
 
-		<!-- This page `/` was built on 2025-06-08T07:04:01.154Z -->
+		<!-- This page `/blog/writing_is_thinking/` was built on 2025-06-08T07:04:01.155Z -->
 		<script type="module" src="/dist/xbxy_EL6cU.js"></script>
 	</body>
 </html>

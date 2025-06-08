@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	
+	<url>
+		<loc>https://oscarniklasson.com/blog/writing_is_thinking/</loc>
+		<lastmod>2023-06-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://oscarniklasson.com/about/</loc>
+		<lastmod>2025-06-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://oscarniklasson.com/blog/</loc>
+		<lastmod>2025-06-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://oscarniklasson.com/</loc>
+		<lastmod>2025-06-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://oscarniklasson.com/tags/</loc>
+		<lastmod>2025-06-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://oscarniklasson.com/feed/feed.xml</loc>
+		<lastmod>2025-06-08</lastmod>
+	</url>
+</urlset>
