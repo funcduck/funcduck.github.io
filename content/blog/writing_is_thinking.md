@@ -3,6 +3,7 @@ title: Writing is thinking
 description: Thoughts on the connection between clear writing and clear thinking.
 date: 2023-06-05
 tags: learning
+draft: true
 ---
 Mental models are naturally slippery. They will easily sway between assuming one thing in one discussion and something contradictory in another. Such fluctuation will lead you astray into the dark forest on your quest to build a good model describing a current situation. To reach the luminous meadow, it is imperative to expose your mental models to the light of day for others to see.
 
