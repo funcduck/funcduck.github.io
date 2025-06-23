@@ -115,6 +115,19 @@ export default async function(eleventyConfig) {
 		return (new Date()).toISOString();
 	});
 
+	eleventyConfig.addShortcode("daysSince", (startDate) => {
+		const today = new Date();
+		const start = new Date(startDate);
+		return Math.floor((today - start) / (1000 * 60 * 60 * 24));
+	});
+
+	eleventyConfig.addShortcode("direction", (startDate) => {
+		const today = new Date();
+		const start = new Date(startDate);
+		const days = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+		return days % 2 === 0 ? "vänster" : "höger";
+	});
+
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
