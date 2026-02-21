@@ -5,9 +5,19 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://oscarniklasson.com/feed/feed.xml" rel="self" />
   <link href="https://oscarniklasson.com/" />
-  <updated>2026-02-21T18:55:41Z</updated>
+  <updated>2026-02-18T00:00:00Z</updated>
   <id>https://oscarniklasson.com/</id>
   <author>
     <name>Oscar Niklasson</name>
   </author>
+  <entry>
+    <title>Leaving Breadcrumbs</title>
+    <link href="https://oscarniklasson.com/blog/leaving-breadcrumbs/" />
+    <updated>2026-02-18T00:00:00Z</updated>
+    <id>https://oscarniklasson.com/blog/leaving-breadcrumbs/</id>
+    <content type="html">&lt;p&gt;Why is this piece of software like this? This question often comes up while working on projects that have seen a fair share of developers come and go. If there&#39;s nobody around to ask, I often go about eyeballing git blame logs, scratching my head over merge requests and jira tickets, throwing the dice in the chat history. Collecting bits of information to help me piece together a larger picture.&lt;/p&gt;
+&lt;p&gt;Most successful software usually outlives the person or team that built it. Writing clear, scoped commit and pull request descriptions is valuable in itself — it forces you to think through a problem, weigh the trade-offs, and consider limitations. But it also leaves a trail for the next person trying to understand not just what changed, but why.&lt;/p&gt;
+&lt;p&gt;Make the effort to explain the motivation behind your changes — future you, and everyone else, will thank you for it. Next year when somebody new comes along, hopefully they&#39;ll be able to pick up the breadcrumbs you left behind should they need to.&lt;/p&gt;
+</content>
+  </entry>
 </feed>
