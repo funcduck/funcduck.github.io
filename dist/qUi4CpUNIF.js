@@ -3,10 +3,10 @@
 
 let globalInstanceIndex = 0;
 
-class HeadingAnchors extends HTMLElement {
-	static register(tagName) {
-		if ("customElements" in window) {
-			customElements.define(tagName || "heading-anchors", HeadingAnchors);
+export class HeadingAnchors extends HTMLElement {
+	static register(tagName = "heading-anchors", registry = window.customElements) {
+		if(registry && !registry.get(tagName)) {
+			registry.define(tagName, this);
 		}
 	}
 
@@ -14,6 +14,7 @@ class HeadingAnchors extends HTMLElement {
 		exclude: "data-ha-exclude",
 		prefix: "prefix",
 		content: "content",
+		contentTemplate: "data-ha-content",
 	}
 
 	static classes = {
@@ -152,8 +153,12 @@ class HeadingAnchors extends HTMLElement {
 		if(placeholder) {
 			let style = getComputedStyle(placeholder);
 			let props = ["font-weight", "font-size", "line-height", "font-family"];
-			let font = props.map(name => style.getPropertyValue(name));
-			anchor.style.setProperty("font", `${font[0]} ${font[1]}/${font[2]} ${font[3]}`);
+			let [weight, size, lh, family] = props.map(name => style.getPropertyValue(name));
+			anchor.style.setProperty("font", `${weight} ${size}/${lh} ${family}`);
+			let vars = style.getPropertyValue("font-variation-settings");
+			if(vars) {
+				anchor.style.setProperty("font-variation-settings", vars);
+			}
 		}
 	}
 
@@ -162,11 +167,20 @@ class HeadingAnchors extends HTMLElement {
 		return this.getAttribute(HeadingAnchors.attributes.prefix) || "Jump to section titled";
 	}
 
+	// Returns a new fragment for each use so the placeholder and link get identical copies.
 	getContent() {
-		if(this.hasAttribute(HeadingAnchors.attributes.content)) {
-			return this.getAttribute(HeadingAnchors.attributes.content);
+		let template = this.querySelector(`:scope > template[${HeadingAnchors.attributes.contentTemplate}]`);
+		if(template) {
+			// importNode (not cloneNode) so custom elements upgrade in this document.
+			return document.importNode(template.content, true);
 		}
-		return "#";
+
+		let fragment = document.createDocumentFragment();
+		let text = this.hasAttribute(HeadingAnchors.attributes.content) ? this.getAttribute(HeadingAnchors.attributes.content) : "#";
+		if(text) {
+			fragment.append(text);
+		}
+		return fragment;
 	}
 
 	// Placeholder nests inside of heading
@@ -174,10 +188,7 @@ class HeadingAnchors extends HTMLElement {
 		let ph = document.createElement("span");
 		ph.setAttribute("aria-hidden", true);
 		ph.classList.add(HeadingAnchors.classes.placeholder);
-		let content = this.getContent();
-		if(content) {
-			ph.textContent = content;
-		}
+		ph.append(this.getContent());
 
 		ph.addEventListener("mouseover", (e) => {
 			let placeholder = e.target.closest(`.${HeadingAnchors.classes.placeholder}`);
@@ -194,8 +205,18 @@ class HeadingAnchors extends HTMLElement {
 		anchor.href = `#${heading.id}`;
 		anchor.classList.add(HeadingAnchors.classes.anchor);
 
+		let label = document.createElement("span");
+		label.classList.add(HeadingAnchors.classes.srOnly);
+		label.textContent = `${this.getAccessibleTextPrefix()}: ${heading.textContent}`;
+		anchor.append(label);
+
 		let content = this.getContent();
-		anchor.innerHTML = `<span class="${HeadingAnchors.classes.srOnly}">${this.getAccessibleTextPrefix()}: ${heading.textContent}</span>${content ? `<span aria-hidden="true">${content}</span>` : ""}`;
+		if(content.hasChildNodes()) {
+			let visible = document.createElement("span");
+			visible.setAttribute("aria-hidden", "true");
+			visible.append(content);
+			anchor.append(visible);
+		}
 
 		anchor.addEventListener("focus", e => {
 			let anchor = e.target.closest(`.${HeadingAnchors.classes.anchor}`);
@@ -223,14 +244,3 @@ class HeadingAnchors extends HTMLElement {
 }
 
 HeadingAnchors.register();
-
-export { HeadingAnchors }
-(function() {
-    const start = new Date("2025-02-13");
-    const today = new Date();
-    const days = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-    const direction = days % 2 === 0 ? "vänster" : "höger";
-
-    document.getElementById("days").textContent = days;
-    document.getElementById("direction").textContent = direction;
-  })();
